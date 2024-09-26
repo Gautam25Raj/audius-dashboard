@@ -99,7 +99,7 @@ export default function SearchBar() {
 
         <button
           onClick={handleSearch}
-          className="bg-gradient-to-b from-[#c5a30d] via-[#ff2975] to-[#8c1eff] text-white font-bold py-2.5 px-5 shadow transition duration-200 rounded-r-full min-w-24 h-11"
+          className="bg-gradient-to-r from-[#ff2975] to-[#8c1eff] text-white font-bold py-2.5 px-5 shadow transition duration-200 rounded-r-full min-w-24 h-11"
         >
           {loading ? (
             <AiOutlineLoading size={24} className="animate-spin mx-auto" />
