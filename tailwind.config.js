@@ -76,6 +76,9 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         grid: "grid 15s linear infinite",
       },
+      backgroundImage: {
+        "button-gradient": "linear-gradient(to right, #ff2975, #8c1eff)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
