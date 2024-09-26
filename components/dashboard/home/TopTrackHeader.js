@@ -1,7 +1,7 @@
-import { FaPlay } from "react-icons/fa";
-
 import React from "react";
 import Image from "next/image";
+
+import PlayButton from "@/components/ui/PlayButton";
 
 const getTopTrack = async () => {
   let error = null;
@@ -36,7 +36,7 @@ const TopTrackHeader = async () => {
           fill
           className="object-cover rounded-2xl"
         />
-        <div className="absolute inset-0 bg-black/30 rounded-2xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/30 to-black/60 rounded-2xl"></div>
       </div>
 
       <div className="relative h-full w-full z-10 text-white p-8 flex justify-between">
@@ -51,9 +51,7 @@ const TopTrackHeader = async () => {
           </div>
 
           <div className="mt-auto">
-            <button className="p-5 mt-4 bg-black text-white rounded-full hover:scale-105 active:scale-100 transition-transform">
-              <FaPlay size={24} className=" translate-x-0.5" />
-            </button>
+            <PlayButton id={track.id} />
           </div>
         </div>
 
