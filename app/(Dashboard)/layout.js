@@ -4,6 +4,7 @@ import Image from "next/image";
 import DashboardNavbar from "@/components/dashboard/Navbar";
 import Sidebar from "@/components/dashboard/sidebar/Sidebar";
 import ReduxProvider from "@/provider/ReduxProvider";
+import MusicPlayer from "@/components/musicPlayer/MusicPlayer";
 
 const DashboardLayout = ({ children }) => {
   return (
@@ -23,7 +24,10 @@ const DashboardLayout = ({ children }) => {
 
         <div className="flex-1 py-2.5">
           <DashboardNavbar />
+
           <div className="mt-5">{children}</div>
+
+          <MusicPlayer />
         </div>
       </div>
     </ReduxProvider>

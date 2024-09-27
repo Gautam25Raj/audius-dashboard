@@ -13,7 +13,7 @@ import {
   clearLoading,
 } from "@/redux/slice/songSlice";
 
-const PlayButton = ({ id }) => {
+const PlayButton = ({ id, track }) => {
   const dispatch = useDispatch();
   const { currentSong, isPlaying, loading } = useSelector(
     (state) => state.song
@@ -27,7 +27,17 @@ const PlayButton = ({ id }) => {
 
       dispatch(setLoading());
       audioElement.oncanplaythrough = () => {
-        dispatch(setCurrentSong({ id, audioElement }));
+        dispatch(
+          setCurrentSong({
+            id,
+            artwork: { ...track.artwork },
+            title: track.title,
+            genre: track.genre,
+            mood: track.mood,
+            tags: track.tags,
+            audioElement,
+          })
+        );
         dispatch(clearLoading());
       };
     }
@@ -53,7 +63,7 @@ const PlayButton = ({ id }) => {
       {loading ? (
         <AiOutlineLoading size={24} className="animate-spin" />
       ) : isPlaying && currentSong?.id === id ? (
-        <FaPause size={24} className="translate-x-0.5" />
+        <FaPause size={24} />
       ) : (
         <FaPlay size={24} className="translate-x-0.5" />
       )}

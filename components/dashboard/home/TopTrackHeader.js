@@ -36,6 +36,7 @@ const TopTrackHeader = async () => {
           fill
           className="object-cover rounded-2xl"
         />
+
         <div className="absolute inset-0 bg-gradient-to-br from-black/30 to-black/60 rounded-2xl"></div>
       </div>
 
@@ -51,12 +52,13 @@ const TopTrackHeader = async () => {
           </div>
 
           <div className="mt-auto">
-            <PlayButton id={track.id} />
+            <PlayButton id={track.id} track={track} />
           </div>
         </div>
 
         <div className="flex flex-col justify-between">
           <div></div>
+
           <div className="relative z-10 flex gap-3 mr-4">
             <div className="w-14 h-14 relative rounded-full border-4 border-white">
               <Image
