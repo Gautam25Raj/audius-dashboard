@@ -13,13 +13,13 @@ const menuItems = [
     list: [
       { title: "Home", path: "/home", icon: <MdHome /> },
       {
-        title: "Feeds",
-        path: "/feeds",
+        title: "Trending",
+        path: "/trending",
         icon: <MdDynamicFeed />,
       },
       {
-        title: "Albums",
-        path: "/albums",
+        title: "playlist",
+        path: "/playlist",
         icon: <IoAlbumsOutline />,
       },
       {

@@ -3,9 +3,9 @@ import React from "react";
 
 const HomePage = () => {
   return (
-    <div>
+    <section className="mb-36">
       <TopTrackHeader />
-    </div>
+    </section>
   );
 };
 

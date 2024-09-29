@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
+import ReduxProvider from "@/provider/ReduxProvider";
 import DashboardNavbar from "@/components/dashboard/Navbar";
 import Sidebar from "@/components/dashboard/sidebar/Sidebar";
-import ReduxProvider from "@/provider/ReduxProvider";
 import MusicPlayer from "@/components/musicPlayer/MusicPlayer";
 
 const DashboardLayout = ({ children }) => {
   return (
     <ReduxProvider>
       <div className="flex bg-gray-50 mr-2">
-        <div className="flex-1 p-5 h-screen max-w-xs overflow-y-scroll sticky hide-scroll">
+        <div className="flex-1 p-5 h-screen max-w-xs overflow-y-scroll sticky hide-scroll top-0">
           <Sidebar />
 
           <Image
