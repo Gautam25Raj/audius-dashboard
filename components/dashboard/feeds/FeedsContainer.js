@@ -1,21 +1,22 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import PlaylistList from "./PlaylistList";
-import PlaylistSkeleton from "./PlaylistSkeleton";
 
-const PlaylistContainer = ({ initialPlaylists }) => {
+import FeedList from "./FeedList";
+import FeedsSkeleton from "./FeedsSkeleton";
+
+const FeedsContainer = ({ initialTracks }) => {
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("week");
 
-  const [playlists, setPlaylists] = useState(initialPlaylists);
+  const [tracks, setTracks] = useState(initialTracks);
 
-  const fetchPlaylists = async (timeRange) => {
+  const fetchTracks = async (timeRange) => {
     setLoading(true);
 
     try {
       const response = await fetch(
-        `https://discoveryprovider.audius.co/v1/playlists/trending?time=${timeRange}`,
+        `https://discoveryprovider.audius.co/v1/tracks/trending?time=${timeRange}`,
         {
           headers: { Accept: "application/json" },
         }
@@ -23,30 +24,30 @@ const PlaylistContainer = ({ initialPlaylists }) => {
       const data = await response.json();
 
       if (response.status === 200) {
-        setPlaylists(data.data);
+        setTracks(data.data);
       } else {
-        console.error("Failed to fetch playlists.");
+        console.error("Failed to fetch tracks.");
       }
     } catch (error) {
-      console.error("Error fetching playlists:", error);
+      console.error("Error fetching tracks:", error);
     }
 
     setLoading(false);
   };
 
   useEffect(() => {
-    fetchPlaylists(activeTab);
+    fetchTracks(activeTab);
   }, []);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    fetchPlaylists(tab);
+    fetchTracks(tab);
   };
 
   return (
     <section>
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-4xl font-bold">Trending Playlists</h2>
+        <h2 className="text-4xl font-bold">Trending Tracks</h2>
 
         <div className="flex space-x-4">
           {["week", "month", "year", "all-time"].map((tab) => (
@@ -67,9 +68,9 @@ const PlaylistContainer = ({ initialPlaylists }) => {
         </div>
       </div>
 
-      {loading ? <PlaylistSkeleton /> : <PlaylistList playlists={playlists} />}
+      {loading ? <FeedsSkeleton /> : <FeedList tracks={tracks} />}
     </section>
   );
 };
 
-export default PlaylistContainer;
+export default FeedsContainer;

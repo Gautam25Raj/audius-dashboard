@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+
+import ArtistList from "@/components/dashboard/artist/ArtistList";
 
 const getTopArtists = async () => {
   let error = null;
@@ -109,36 +109,17 @@ const getTopArtists = async () => {
 
 const ArtistsPage = async () => {
   const artists = await getTopArtists();
-  console.log(artists[0]);
 
   return (
-    <section className="grid grid-cols-4 gap-3 mb-36">
+    <div>
       {artists ? (
-        artists.map((artist, index) => (
-          <Link
-            href={`/artists/${artist.id}`}
-            key={artist.id}
-            className="bg-white p-4 rounded shadow"
-          >
-            <div className="w-full h-60 relative">
-              <Image
-                src={artist.profile_picture["480x480"]}
-                alt={artist.name}
-                fill
-                className="w-full h-40 object-cover rounded mb-4"
-              />
-            </div>
-
-            <h2 className="text-lg font-bold mt-3">{artist.name}</h2>
-            <p className="text-sm text-gray-500">@{artist.handle}</p>
-          </Link>
-        ))
+        <ArtistList artists={artists} />
       ) : (
         <div className="col-span-8 text-center text-red-500">
           Failed to load artist data.
         </div>
       )}
-    </section>
+    </div>
   );
 };
 

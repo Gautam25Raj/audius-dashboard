@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const PlaylistItem = ({ playlist }) => {
   return (
-    <div className="w-64 h-auto p-3 bg-gray-100 relative overflow-visible shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105">
+    <div className="w-64 h-auto p-3 bg-white relative overflow-visible shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105 rounded-xl">
       <div className="h-40 w-full bg-gray-200 rounded-md transition-transform duration-300 ease-in-out hover:transform hover:-translate-y-6 hover:scale-125 hover:shadow-2xl overflow-hidden relative">
         <Image
           src={

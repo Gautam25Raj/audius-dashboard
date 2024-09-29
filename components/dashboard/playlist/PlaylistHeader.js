@@ -54,9 +54,7 @@ const PlaylistHeader = ({ playlist }) => {
         </div>
 
         <Link
-          href={playlist.permalink}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={`/playlist/${playlist.id}`}
           className="self-start bg-button-gradient text-white py-2 px-4 rounded-lg transition-colors duration-300"
         >
           View Playlist

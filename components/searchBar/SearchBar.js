@@ -1,7 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { AiOutlineLoading } from "react-icons/ai";
+
+import { useRouter } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
 
 import CustomSelect from "../ui/CustomSelect";
@@ -68,15 +69,15 @@ export default function SearchBar() {
   }, [handleKeyPress]);
 
   const filterOptions =
-    searchType === "track"
+    searchType === "track" || searchType === "playlist"
       ? ["id", "normal"]
       : ["id", "handle", "wallet", "normal"];
 
   return (
-    <div className="space-y-3  max-w-3xl mx-auto w-full">
+    <div className="space-y-3 max-w-3xl mx-auto w-full">
       <div className="flex items-center rounded-full shadow-md">
         <CustomSelect
-          options={["track", "user"]}
+          options={["track", "user", "playlist"]}
           value={searchType}
           onChange={handleSearchTypeChange}
           className="rounded-l-full pl-5"

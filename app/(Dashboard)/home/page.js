@@ -1,5 +1,6 @@
-import TopTrackHeader from "@/components/dashboard/home/TopTrackHeader";
 import React from "react";
+
+import TopTrackHeader from "@/components/dashboard/home/TopTrackHeader";
 
 const HomePage = () => {
   return (

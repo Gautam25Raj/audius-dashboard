@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+
+import ArtistList from "@/components/dashboard/artist/ArtistList";
 
 const SearchUserPage = async ({ searchParams }) => {
   const { query, type } = searchParams;
@@ -27,16 +28,18 @@ const SearchUserPage = async ({ searchParams }) => {
 
   if (url) {
     try {
-      const response = await axios.get(url, {
+      const response = await fetch(url, {
         headers: { Accept: "application/json" },
         maxBodyLength: Infinity,
       });
 
-      if (response.data) {
-        if (type === "normal" && response.data.data.length > 0) {
-          userData = response.data.data[0];
+      const data = await response.json();
+
+      if (response.status === 200) {
+        if (type === "normal") {
+          userData = data.data;
         } else {
-          userData = response.data.data;
+          userData = [data.data];
         }
       } else {
         error = "No user found with the given query.";
@@ -51,11 +54,7 @@ const SearchUserPage = async ({ searchParams }) => {
       {error ? (
         <p>{error}</p>
       ) : userData ? (
-        <div>
-          <h1>{userData.name || "No Name Available"}</h1>
-          <p>Handle: {userData.handle || "No Handle Available"}</p>
-          <p>Bio: {userData.bio || "No Bio Available"}</p>
-        </div>
+        <ArtistList artists={userData} />
       ) : (
         <p>Loading...</p>
       )}
