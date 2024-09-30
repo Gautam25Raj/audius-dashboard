@@ -2,6 +2,8 @@ import React from "react";
 
 import FeedItem from "@/components/dashboard/feeds/FeedItems";
 
+export const dynamic = "force-dynamic";
+
 const getTracks = async (params) => {
   try {
     let apiUrl = "";

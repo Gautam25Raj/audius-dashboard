@@ -2,6 +2,8 @@ import React from "react";
 
 import PlaylistList from "@/components/dashboard/playlist/PlaylistList";
 
+export const dynamic = "force-dynamic";
+
 const getPlaylists = async (params) => {
   let error = null;
   let playlistsData = null;

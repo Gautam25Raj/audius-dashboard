@@ -54,7 +54,7 @@ const Sidebar = async () => {
             <span className="text-gray-400 font-bold text-sm mb-2">
               {cat.title}
             </span>
-            <ul className="space-y-2">
+            <ul className="space-y-2 relative z-50">
               {cat.list.map((item) => (
                 <MenuLink item={item} key={item.title} />
               ))}

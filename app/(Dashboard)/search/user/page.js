@@ -2,6 +2,8 @@ import React from "react";
 
 import ArtistList from "@/components/dashboard/artist/ArtistList";
 
+export const dynamic = "force-dynamic";
+
 const SearchUserPage = async ({ searchParams }) => {
   const { query, type } = searchParams;
 
