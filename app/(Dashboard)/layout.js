@@ -22,7 +22,7 @@ const DashboardLayout = ({ children }) => {
           />
         </div>
 
-        <div className="flex-1 py-2.5">
+        <div className="flex-1 py-2.5 relative">
           <DashboardNavbar />
 
           <div className="mt-5">{children}</div>

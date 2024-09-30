@@ -3,7 +3,7 @@
 import { FaPlay, FaPause } from "react-icons/fa";
 import { AiOutlineLoading } from "react-icons/ai";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
