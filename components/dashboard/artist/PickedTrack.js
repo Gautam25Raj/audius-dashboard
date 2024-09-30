@@ -7,6 +7,13 @@ import PlayButton from "@/components/ui/PlayButton";
 import Image from "next/image";
 
 const PickedTrack = ({ artistPickTrackId }) => {
+  if (!artistPickTrackId)
+    return (
+      <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start relative space-y-4 w-full">
+        <h2 className="text-2xl mb-2 font-bold">Artist Pick Up</h2>
+        None
+      </div>
+    );
   const [track, setTrack] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,9 +24,11 @@ const PickedTrack = ({ artistPickTrackId }) => {
         const response = await axios.get(
           `https://discoveryprovider.audius.co/v1/tracks/${artistPickTrackId}`
         );
+        console.log(response.data.data);
         setTrack(response.data.data);
       } catch (err) {
         setError("Error fetching track details");
+        setLoading(false);
       } finally {
         setLoading(false);
       }
@@ -36,6 +45,7 @@ const PickedTrack = ({ artistPickTrackId }) => {
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-start relative space-y-4">
+      <h2 className="text-2xl mb-2 font-bold">Artist Pick Up</h2>
       <div className="w-40 h-40 relative">
         <Image
           src={track.artwork["480x480"] || "/default-artwork.png"}
